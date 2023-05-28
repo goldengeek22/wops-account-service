@@ -1,6 +1,7 @@
 package com.wops.accountservice.web;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.wops.accountservice.config.WopsAccountPropertiesConfig;
 import com.wops.accountservice.domain.WopsAccount;
 import com.wops.accountservice.domain.WopsAccountAlreadyExistsException;
 import com.wops.accountservice.domain.WopsAccountService;
@@ -33,6 +34,8 @@ class WopsAccountControllerTest {
     private ObjectMapper objectMapper;
     @MockBean
     private WopsAccountService accountService;
+    @MockBean
+    private WopsAccountPropertiesConfig propertiesConfig;
 
     @Test
     void whenCreateAccountWithoutNumberThenShouldReturn400() throws Exception {

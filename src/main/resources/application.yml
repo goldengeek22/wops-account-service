@@ -1,3 +1,9 @@
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh # Exposes the /actuator/refresh endpoint through HTTP
+
 server:
   port: 9001
   tomcat:
@@ -7,3 +13,18 @@ server:
       max: 50
       min-spare: 3
     accept-count: 20
+
+spring:
+  application:
+    name: wops-account-service
+  config:
+    import: "optional:configserver:"
+  cloud:
+    config:
+      uri: http://localhost:7000/
+      request-connect-timeout: 5000
+      request-read-timeout: 10000
+      retry:
+        max-attempts: 3
+        max-interval: 5000
+      fail-fast: true
